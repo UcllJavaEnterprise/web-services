@@ -57,19 +57,9 @@
         </dependency>
         <!-- for JaxB Marchalling and Unmarshalling-->
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.0</version>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.2</version>
         </dependency>
         <dependency>
             <groupId>javax.activation</groupId>
@@ -108,6 +98,22 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-frontend</goal>
+                            <goal>build-frontend</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <requireHomeNodeExec>true</requireHomeNodeExec>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
                 <version>2.5.0</version>
@@ -121,8 +127,8 @@
                 </executions>
                 <configuration>
                     <sources>
-                        <!-- Path to the XSD to generate Java classes from -->
-                        <source>src/main/resources/chat.xsd</source>
+                        <!-- Make sure that your path does not have a space in it: https://github.com/mojohaus/jaxb2-maven-plugin/issues/154-->
+                        <source>${basedir}/src/main/resources/xsd</source>
                     </sources>
                     <!-- The Java package name under which the generated Java classes will be stored -->
                     <packageName>be.ucll.java.ent.soap.model.v1</packageName>

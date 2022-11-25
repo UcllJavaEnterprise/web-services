@@ -35,7 +35,7 @@ public class ChatWebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
     public XsdSchema ChatSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("chat.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource("xsd/chat.xsd"));
     }
 
     @Bean

@@ -51,14 +51,14 @@ public class ChatEndpoint {
             // 4b. Prepare the JAXB generated Response. Something went wrong. Inform the caller of the error
             response.setCode(1);
             response.setType(STypeProcessOutcome.ERROR);
-            response.setErrormessage(e.getMessage());
+            response.setFeedback(e.getMessage());
         } catch (Exception e) {
             logger.error("An unexpected exception occured", e);
 
             // 4c. Prepare the JAXB generated Response. Something went wrong. Inform the caller of the error
             response.setCode(1);
             response.setType(STypeProcessOutcome.ERROR);
-            response.setErrormessage("An unexpected exception occured");
+            response.setFeedback("An unexpected exception occured");
         }
 
         // 5. Effectively return the SOAP Web-Service response

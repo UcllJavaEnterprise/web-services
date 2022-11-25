@@ -40,7 +40,7 @@ public class ChatSoapClient extends WebServiceGatewaySupport {
         if (response.getCode() == 0) {
             return null;
         } else {
-            return response.getErrormessage();
+            return response.getFeedback();
         }
     }
 
